@@ -249,6 +249,7 @@ namespace mastermindPE
             if (timer = 0.10)
             {
                 timer.Stop();
+
             }
 
         }
