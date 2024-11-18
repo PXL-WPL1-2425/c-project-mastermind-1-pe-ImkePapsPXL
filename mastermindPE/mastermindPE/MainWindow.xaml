@@ -29,6 +29,8 @@
         <ComboBox Name="fourthColorCombo" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="FourthComboBox_SelectionChanged"/>
 
         <Button Name="checkCodeButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Height="25" Margin="30" Content="Check code" Click="CheckCodeButton_Click" ></Button>
-        <TextBox Grid.Row="2" />
+        <TextBox Grid.Row="2" Name="debugInfotextBox"  Margin="20" IsEnabled="False" />
+        <TextBox Grid.Row="2" Grid.Column="3" Name="timerTextBox"  Margin="20" IsEnabled="False" />
+        
     </Grid>
 </Window>

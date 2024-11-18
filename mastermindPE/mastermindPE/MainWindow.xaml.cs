@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace mastermindPE
 {
@@ -20,12 +21,15 @@ namespace mastermindPE
         SolidColorBrush[] colorCode = { Brushes.Red, Brushes.Green, Brushes.White, Brushes.Yellow, Brushes.Blue, Brushes.Orange };
         string[] colorName = { "Red", "Green", "White", "Yellow", "Blue", "Orange" };
         int[] randomColors = new int[4];
-
+        DispatcherTimer timer = new DispatcherTimer();
+        TimeSpan elapsedTime;
+        DateTime startTime;
         public MainWindow()
         {
             InitializeComponent();
             RandomColorCode();
             ComboBoxItems();
+            StartCountDown();
         }
         private void RandomColorCode()
         {
@@ -169,6 +173,7 @@ namespace mastermindPE
         private void CheckCodeButton_Click(object sender, RoutedEventArgs e)
         {
             CheckCode();
+            StartCountDown();  
         }
 
         private void CheckCode()
@@ -210,9 +215,27 @@ namespace mastermindPE
             }
         }
 
-        private void ToggleDebug()
-        {
-
+        private void ToggleDebug(object sender, KeyEventArgs e)
+        {            
+            if (e.Key == Key.F12 )
+            {
+                debugInfotextBox.Text = $"{colorName[randomColors[0]].ToString()}, {colorName[randomColors[1]].ToString()}, {colorName[randomColors[2]].ToString()}, {colorName[randomColors[3]].ToString()}";
+                
+            }
         }
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            elapsedTime = DateTime.Now - startTime;
+            timerTextBox.Text = elapsedTime.ToString(@"ss\:fff");
+        }
+        private void StartCountDown()
+        {
+            startTime = DateTime.Now;
+            timer.Tick += Timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
+                        
+        }
+        
     }
 }
