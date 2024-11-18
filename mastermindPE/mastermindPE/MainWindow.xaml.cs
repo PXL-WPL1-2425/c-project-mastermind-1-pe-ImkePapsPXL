@@ -216,7 +216,8 @@ namespace mastermindPE
         }
 
         private void ToggleDebug(object sender, KeyEventArgs e)
-        {            
+        {   
+            ///Via de Key press wordt er de textbox getoond met de kleurcode.
             if (e.Key == Key.F12 )
             {
                 debugInfotextBox.Text = $"{colorName[randomColors[0]].ToString()}, {colorName[randomColors[1]].ToString()}, {colorName[randomColors[2]].ToString()}, {colorName[randomColors[3]].ToString()}";
@@ -230,12 +231,23 @@ namespace mastermindPE
         }
         private void StartCountDown()
         {
+            ///<para>Hier definieer ik dat de counter op 0 moet beginnen
+            ///het gaat om de seconden. (TimeSpan)</para>
             startTime = DateTime.Now;
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
                         
         }
-        
+        private void StopCountDown()
+        {
+            ///<para> De timer stopt na 10 seconde als er niet op check code is geklikt.
+            ///</para>
+            if (startTime = 0.10)
+            {
+                timer.Stop();
+            }
+
+        }
     }
 }
