@@ -24,12 +24,15 @@ namespace mastermindPE
         DispatcherTimer timer = new DispatcherTimer();
         TimeSpan elapsedTime;
         DateTime startTime;
+        int attempts = 0;
+
         public MainWindow()
         {
             InitializeComponent();
             RandomColorCode();
             ComboBoxItems();
             StartCountDown();
+            StopCountDown();
         }
         private void RandomColorCode()
         {
@@ -189,7 +192,7 @@ namespace mastermindPE
             UpdateLabelFeedback(thirdCodeLabel, userSelection[2], randomColors[2], 2);
             UpdateLabelFeedback(fourthCodeLabel, userSelection[3], randomColors[3], 3);
 
-            int attempts = 1;
+            
 
             if (CheckCode != RandomColorCode)
             {
@@ -218,7 +221,7 @@ namespace mastermindPE
         private void ToggleDebug(object sender, KeyEventArgs e)
         {   
             ///Via de Key press wordt er de textbox getoond met de kleurcode.
-            if (e.Key == Key.F12 )
+            if (Keyboard.IsKeyDown(Key.RightCtrl) && Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.F12))
             {
                 debugInfotextBox.Text = $"{colorName[randomColors[0]].ToString()}, {colorName[randomColors[1]].ToString()}, {colorName[randomColors[2]].ToString()}, {colorName[randomColors[3]].ToString()}";
                 
@@ -243,7 +246,7 @@ namespace mastermindPE
         {
             ///<para> De timer stopt na 10 seconde als er niet op check code is geklikt.
             ///</para>
-            if (startTime = 0.10)
+            if (timer = 0.10)
             {
                 timer.Stop();
             }
