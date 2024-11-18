@@ -221,7 +221,7 @@ namespace mastermindPE
         private void ToggleDebug(object sender, KeyEventArgs e)
         {   
             ///Via de Key press wordt er de textbox getoond met de kleurcode.
-            if (Keyboard.e.KeyboardDevice.Modifiers == ModifierKeys.Control && Keyboard.IsKeyDown(Key.F12))
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control && Keyboard.IsKeyDown(Key.F12))
             {
                 debugInfotextBox.Text = $"{colorName[randomColors[0]].ToString()}, {colorName[randomColors[1]].ToString()}, {colorName[randomColors[2]].ToString()}, {colorName[randomColors[3]].ToString()}";
                 debugInfotextBox.Visibility = Visibility.Visible;
